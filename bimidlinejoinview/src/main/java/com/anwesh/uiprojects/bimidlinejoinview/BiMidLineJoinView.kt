@@ -48,9 +48,9 @@ fun Canvas.drawBiMidLineJoin(scale : Float, w : Float, h : Float, paint : Paint)
         drawLine(0f, 0f, 0f, -hSize * sf1, paint)
         val hGap : Float = hSize / lines
         for (k in 0..(lines - 1)) {
-            val sfj : Float = sf.divideScale(k + 1, lines)
+            val sfj : Float = sf.divideScale(k + 1, parts)
             save()
-            translate(0f, -hSize + hGap * j)
+            translate(0f, -hSize + hGap * k)
             drawLine(0f, 0f, gap * sfj, 0f, paint)
             restore()
         }
