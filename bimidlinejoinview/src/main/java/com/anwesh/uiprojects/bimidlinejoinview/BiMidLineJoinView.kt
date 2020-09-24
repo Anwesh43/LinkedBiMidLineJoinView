@@ -195,4 +195,27 @@ class BiMidLineJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiMidLineJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val bimidlinejoin : BiMidLineJoin = BiMidLineJoin(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bimidlinejoin.draw(canvas, paint)
+            animator.animate {
+                bimidlinejoin.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bimidlinejoin.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
