@@ -220,4 +220,13 @@ class BiMidLineJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BiMidLineJoinView {
+            val view : BiMidLineJoinView = BiMidLineJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
